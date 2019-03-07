@@ -4,22 +4,45 @@ var images = ["assets/images/peppermint.gif", "assets/images/alyssaReaction.gif"
 var questions = ["Which queen was the season 9 runner up?", "Which queen went as Joan Crawford in The Snatch Game?", "In the episode 'RuPocalypse Now!' who was the winner of the post-apocalyptic runway challange?", 'Which Queen can we attribut the catchphrase "The shade of it all" to?', 'Which queen won the lip sync that sent home Vanessa Vanjie Mateo but gave the world the famous "Miss Vanjie" exit?'];
 var possibleAnswers = [["Trinity 'The Tuck' Taylor", "Shea Couleé", "Peppermint", "Valintina"], ["Jinkx Monsoon", "Sasha Velour", "BenDeLaCreme", "Alyssa Edwards"], ["Sharon Needles", "Phi Phi O'Hara", "Alaska", "Monique Heart"], ["Alyssa Edwards", "Latrice Royal", "Shangela", "Aja"], ["Mayhem Miller", "Dusty Ray Bottoms", "Kalorie Karbdashian Williams", "The Vixen"]];
 var correctAnswers = ["c", "d", "a", "b", "c"];
-var correctAnswerText = ["Peppermint", "Alyssa Edwards", "Sharon Needles", "Latrice Royal", "Kalorie Karbdashian Williams" ];
+var correctAnswerText = ["Peppermint", "Alyssa Edwards", "Sharon Needles", "Latrice Royal", "Kalorie" ];
 var message = "";
 var questionNumber = 0;
 var totalRight = 0;
 var totalWrong = 0;
 var timerCount = 20;
 var timer;
+var addOrRemove = true;
 
 
 
 // make a start game function that starts at questionNumber and stats at 0 and calls the next slide function
 function startGame() {
+    $('#container').css('display','block');
+    $('#correct-incorrect').css('display','none');
+    $('#timer').css('display','none');
+    $('.question-button').css('display','none');
+    clearInterval(timer);
+    
+   
+    // create start button
+    var startBtn = $("<button>");
+    startBtn.addClass("start-button")
+    startBtn.text("Press to Start")
+    $("#answers").append(startBtn);
+   
+
+    //add start message
+    $("#question").text("Press button to start you engines! And may the best woman, win!")
+    
+    // set stats
     questionNumber = 0;
     totalRight = 0;
     totalWrong = 0;
-    nextSlide();
+
+    $(".start-button").on("click", function () {
+        nextSlide();
+    });
+   
 }
 startGame();
 
@@ -31,6 +54,7 @@ startGame();
         clearInterval(timer);
         totalWrong++;
         incorrectSlide();
+        
     }
 }
 
@@ -41,16 +65,21 @@ function myTimer() {
 
 // make an end of game funciton
 function endOfGame() {
-    
+    clearInterval(timer);
+
     // display message
     $("#message").text("Look how well you did!")
-    // display image 
     // display stats
+    $("#message").append(" \nYou got " + totalRight + " questions right!")
+    $("#message").append(" \nAnd " + totalWrong + " questions wrong.")
+   
 
     // create do again button
     var startOverBtn = $("<button>");
     startOverBtn.addClass("start-over-button")
-    $("#game-over").append(startOverBtn);
+    startOverBtn.text("Do Again")
+    $("#message").append(startOverBtn);
+
     // if hit startaGame
     $(".start-over-button").on("click", function () {
         startGame();
@@ -70,38 +99,46 @@ function lastQuestionCheck() {
 
 // make function for if got answer right that shows a pic or vid and 
 function correctSlide() {
+    clearInterval(timer);
+    $('#container').css('display','none');
+    $('#correct-incorrect').css('display','block');
     
     // displays gif with DOM
     $("#image-space").html("<img src=" + images[questionNumber] + " width='400px'>")
     // displays a congratulation message 
-    $("#message").text("Congratulations! You got that one right. You are a winner, Baby!")
+
+    $("#message").html("Congratulations! You got that one right. \nYou are a winner, Baby!").wrap('<pre />');
     // calls lastQuestion function if returned false
     lastQuestionCheck();
     if (lastQuestion === true) {
-        setTimeout(endOfGame, 4000);
+        setTimeout(endOfGame, 5000);
+       
 
     } else {
         setTimeout(questionNumber++);
-        setTimeout(nextSlide, 4000);
+        setTimeout(nextSlide, 5000);
     }
 }
 
 // make function for if got answer wrong that shows a pic or vid and 
 function incorrectSlide() {
-    
+    clearInterval(timer);
+    $('#container').css('display','none');
+    $('#correct-incorrect').css('display','block');
+
     // displays gif with DOM
     $("#image-space").html("<img src=" + images[questionNumber] + " width='400px'>")
    // message and displays the correct answer
-   $("#message").text("Not quiet. the correct answer was " + correctAnswerText[questionNumber] + ". Next time you better werk!");
+   $("#message").html("Not quiet. the correct answer was " + correctAnswerText[questionNumber] + ".\nNext time you better werk!").wrap('<pre />');
    // check if last question
    lastQuestionCheck();
    if (lastQuestion === true) {
        
-       setTimeout(endOfGame, 4000);
+       setTimeout(endOfGame, 5000);
 
    } else {
     setTimeout(questionNumber++);
-    setTimeout(nextSlide, 4000);
+    setTimeout(nextSlide, 5000);
    }
 
 }
@@ -109,7 +146,10 @@ function incorrectSlide() {
 
 // make a next slide function 
 function nextSlide() {
-    
+    $('#container').css('display','block');
+    $('#correct-incorrect').css('display','none');
+    $('#timer').css('display','block');
+    $('.question-button').css('display','block');
     //  set and display timer countdown
     timerCount = 10;
 
@@ -117,6 +157,8 @@ function nextSlide() {
     clearInterval(timer);
     myTimer();
     // display question
+    $("#answers").html("");
+    
     $("#question").text(questions[questionNumber]);
     // display answers on buttons make 4 buttons with DOM 
     for (var i = 0; i < 4; i++) {
@@ -131,8 +173,8 @@ function nextSlide() {
 
         // add questions to the buttons
         questionBtn.text(possibleAnswers[questionNumber][i]);
-        $("#question").append(questionBtn);
-        console.log(questionBtn);
+        $("#answers").append(questionBtn);
+       
     }
 
 
@@ -146,12 +188,10 @@ function nextSlide() {
         // logic for checking if answer is correct against userClicked variable
         if (userClicked === correctAnswers[questionNumber]) {
             // if correct go to correct function/slide and totalRight++
-            alert("correct")
             correctSlide();
             totalRight++;
         } else if  (userClicked !== correctAnswers[questionNumber]) {
             // if wrong 
-            alert("not correct")
             incorrectSlide();
             totalWrong++;
         }

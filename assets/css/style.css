@@ -1,3 +1,151 @@
-.hide {
-    display: none;
+
+
+
+body {
+    /* background-image: url("../images/XTzJ7Ue.png"); */
+    background-image: url("../images/2e711f7ea7ae235f34ba1b14e9edfa08.gif");
+    background-size: 350px;
+    font-family: 'Overpass', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    background-color: #5fe9ea;
+    width: 716px;
+    margin: 0 auto;
+    height: 75px;
+    margin-bottom: 15px;
+    border-radius: 50px;
+    border: 8px solid black;
+    font-family: 'Sigmar One', cursive;
+    padding: 0px 7px 7px 7px;
+}
+
+#container {
+    background-color: #5fe9ea;
+    height: 600px;
+    width: 700px;
+    margin: 0 auto;
+    border: 8px solid black;
+    border-radius: 7px;
+    position: relative;
+}
+
+#timer {
+    background-color: black;
+    opacity: .9;
+    color: whitesmoke;
+    text-align: center;
+    font-size: 25px;
+    /* font-family: 'Overpass', sans-serif; */
+}
+
+#question {
+    font-size: 35px;
+    padding: 0px 15px 35px 15px;
+    background-color: black;
+    color: #fff578;
+    opacity: .9;
+    width: 677px;
+    margin: 0px 10px 40px 10px auto;
+    /* font-family: 'Overpass', sans-serif; */
+   
+}
+
+.question-button {
+   
+    width: 450px;
+    height: 60px;
+    margin: 15px;
+    font-size: 25px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    background-color: #fd8fff;
+    margin: 20px auto;
+    border: 3px solid #fff578;
+    /* font-family: 'Overpass', sans-serif; */
+ 
+
+    
+}
+
+.question-button:hover {
+    background-color: #fff578;
+    border: 3px solid #fd8fff;
+}
+
+/* correct-incorrect slide */
+#correct-incorrect {
+    background-color: #5fe9ea;
+    height: 500px;
+    width: 700px;
+    margin: 0 auto;
+    border: 8px solid black;
+    border-radius: 7px;
+    position: relative;
+
+}
+
+#image-space {
+   text-align: center;
+}
+
+img {
+   border: 10px solid black;
+   border-radius: 8px;
+   margin: 20px;
+}
+
+#message {
+    font-size: 30px;
+    padding: 15px;
+    height: 150px;
+    padding-bottom: 35px;
+    background-color: black;
+    color: #fff578;
+    opacity: .9;
+    width: 677px;
+    margin: 10px 10px 40px 10px auto;
+    font-family: 'Overpass', sans-serif;
+}
+
+/* end game slide */
+
+.start-over-button {
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    background-color: #fd8fff;
+    margin: 5px 20px 20px 20px auto;
+    margin: auto;
+    border: 3px solid #fff578;
+}
+
+.start-over-button:hover {
+    background-color: #fff578;
+    border: 3px solid #fd8fff;
+}
+
+/* game start */
+.start-button {
+    width: 450px;
+    height: 60px;
+    margin: 15px;
+    font-size: 25px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    background-color: #fd8fff;
+    margin: 20px auto;
+    border: 3px solid #fff578;
+    font-family: 'Overpass', sans-serif;
+}
+.start-button:hover {
+    background-color: #fff578;
+    border: 3px solid #fd8fff;
 }
