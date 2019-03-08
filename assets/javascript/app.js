@@ -17,6 +17,8 @@ var timer;
 
 // make a start game function that starts at questionNumber and stats at 0 and calls the next slide function
 function startGame() {
+
+    // set up which css to display/hide
     $('#container').css('display','block');
     $('#correct-incorrect').css('display','none');
     $('#timer').css('display','none');
@@ -69,6 +71,7 @@ function endOfGame() {
 
     // display message
     $("#message").text("Look how well you did!")
+
     // display stats
     $("#message").append(" \nYou got " + totalRight + " questions right!")
     $("#message").append(" \nAnd " + totalWrong + " questions wrong.")
@@ -105,8 +108,8 @@ function correctSlide() {
     
     // displays gif with DOM
     $("#image-space").html("<img src=" + images[questionNumber] + " width='400px'>")
+    
     // displays a congratulation message 
-
     $("#message").html("Congratulations! You got that one right. \nYou're a winner, Baby!").wrap('<pre />');
     // calls lastQuestion function if returned false
     lastQuestionCheck();
