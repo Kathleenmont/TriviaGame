@@ -1,17 +1,17 @@
 
 // name some global variables 
-var images = ["assets/images/peppermint.gif", "assets/images/alyssaReaction.gif", "assets/images/needles.gif", "assets/images/latrice.gif", "assets/images/vanjie.gif"];
-var questions = ["Which queen was the season 9 runner up?", "Which queen went as Joan Crawford in The Snatch Game?", "In the episode 'RuPocalypse Now!' who was the winner of the post-apocalyptic runway challange?", 'Which Queen can we attribut the catchphrase "The shade of it all" to?', 'Which queen won the lip sync that sent home Vanessa Vanjie Mateo but gave the world the famous "Miss Vanjie" exit?'];
-var possibleAnswers = [["Trinity 'The Tuck' Taylor", "Shea Couleé", "Peppermint", "Valintina"], ["Jinkx Monsoon", "Sasha Velour", "BenDeLaCreme", "Alyssa Edwards"], ["Sharon Needles", "Phi Phi O'Hara", "Alaska", "Monique Heart"], ["Alyssa Edwards", "Latrice Royal", "Shangela", "Aja"], ["Mayhem Miller", "Dusty Ray Bottoms", "Kalorie Karbdashian Williams", "The Vixen"]];
-var correctAnswers = ["c", "d", "a", "b", "c"];
-var correctAnswerText = ["Peppermint", "Alyssa Edwards", "Sharon Needles", "Latrice Royal", "Kalorie" ];
+var images = ["assets/images/peppermint.gif", "assets/images/alyssaReaction.gif", "assets/images/needles.gif", "assets/images/latrice.gif", "assets/images/vanjie.gif", "assets/images/bobz.gif", "assets/images/shea.gif"];
+var questions = ["Which queen was the season 9 runner up?", "Which queen went as Joan Crawford in The Snatch Game?", "In the episode 'RuPocalypse Now!' who was the winner of the post-apocalyptic runway challange?", 'Which Queen can we attribut the catchphrase "The shade of it all" to?', 'Which queen won the lip sync that sent home Vanessa Vanjie Mateo but gave the world the famous "Miss Vanjie" exit?', "Which queen is Mis Cracker's Drag Mother? ", "Which queen won more challenges then her seasons winner did?"];
+var possibleAnswers = [["Trinity 'The Tuck' Taylor", "Shea Couleé", "Peppermint", "Valintina"], ["Jinkx Monsoon", "Sasha Velour", "BenDeLaCreme", "Alyssa Edwards"], ["Sharon Needles", "Phi Phi O'Hara", "Alaska", "Monique Heart"], ["Alyssa Edwards", "Latrice Royal", "Shangela", "Aja"], ["Mayhem Miller", "Dusty Ray Bottoms", "Kalorie Karbdashian Williams", "The Vixen"], ["Thorgy Thor", "Monet Exchange", "Asia O'hara", "Bob the Drag Queen"], ["Trinity 'The Tuck' Taylor", "Valentina", "Shea Coulee", "Blair St. Clair" ]];
+var correctAnswers = ["c", "d", "a", "b", "c", "d", "c"];
+var correctAnswerText = ["Peppermint", "Alyssa Edwards", "Sharon Needles", "Latrice Royal", "Kalorie", "Bob", "Shea Coulee"];
 var message = "";
 var questionNumber = 0;
 var totalRight = 0;
 var totalWrong = 0;
 var timerCount = 20;
 var timer;
-var addOrRemove = true;
+
 
 
 
@@ -32,7 +32,7 @@ function startGame() {
    
 
     //add start message
-    $("#question").text("Press button to start you engines! And may the best woman, win!")
+    $("#question").text("Press button to start your engines! And may the best woman, win!")
     
     // set stats
     questionNumber = 0;
@@ -107,16 +107,17 @@ function correctSlide() {
     $("#image-space").html("<img src=" + images[questionNumber] + " width='400px'>")
     // displays a congratulation message 
 
-    $("#message").html("Congratulations! You got that one right. \nYou are a winner, Baby!").wrap('<pre />');
+    $("#message").html("Congratulations! You got that one right. \nYou're a winner, Baby!").wrap('<pre />');
     // calls lastQuestion function if returned false
     lastQuestionCheck();
     if (lastQuestion === true) {
         setTimeout(endOfGame, 5000);
-       
+        clearInterval(timer);
 
     } else {
         setTimeout(questionNumber++);
         setTimeout(nextSlide, 5000);
+        clearInterval(timer);
     }
 }
 
@@ -129,12 +130,11 @@ function incorrectSlide() {
     // displays gif with DOM
     $("#image-space").html("<img src=" + images[questionNumber] + " width='400px'>")
    // message and displays the correct answer
-   $("#message").html("Not quiet. the correct answer was " + correctAnswerText[questionNumber] + ".\nNext time you better werk!").wrap('<pre />');
+   $("#message").html("Not quite. The correct answer was " + correctAnswerText[questionNumber] + ".\nNext time you better werk!").wrap('<pre />');
    // check if last question
    lastQuestionCheck();
    if (lastQuestion === true) {
-       
-       setTimeout(endOfGame, 5000);
+     setTimeout(endOfGame, 5000);
 
    } else {
     setTimeout(questionNumber++);
@@ -146,16 +146,18 @@ function incorrectSlide() {
 
 // make a next slide function 
 function nextSlide() {
+    
     $('#container').css('display','block');
     $('#correct-incorrect').css('display','none');
     $('#timer').css('display','block');
     $('.question-button').css('display','block');
-    //  set and display timer countdown
-    timerCount = 10;
-
+    
+     //  set and display timer countdown
+     timerCount = 10;
+    
+     myTimer();
    
-    clearInterval(timer);
-    myTimer();
+
     // display question
     $("#answers").html("");
     

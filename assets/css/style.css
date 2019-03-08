@@ -79,7 +79,7 @@ h1 {
 /* correct-incorrect slide */
 #correct-incorrect {
     background-color: #5fe9ea;
-    height: 500px;
+    height: 525px;
     width: 700px;
     margin: 0 auto;
     border: 8px solid black;
@@ -101,7 +101,7 @@ img {
 #message {
     font-size: 30px;
     padding: 15px;
-    height: 150px;
+    height: 175px;
     padding-bottom: 35px;
     background-color: black;
     color: #fff578;
@@ -114,15 +114,15 @@ img {
 /* end game slide */
 
 .start-over-button {
-    width: 100px;
-    height: 30px;
-    font-size: 16px;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
     border-radius: 5px;
     text-align: center;
     display: block;
     background-color: #fd8fff;
-    margin: 5px 20px 20px 20px auto;
     margin: auto;
+    margin-top: 16px;
     border: 3px solid #fff578;
 }
 
@@ -135,7 +135,6 @@ img {
 .start-button {
     width: 450px;
     height: 60px;
-    margin: 15px;
     font-size: 25px;
     border-radius: 5px;
     text-align: center;
@@ -149,3 +148,183 @@ img {
     background-color: #fff578;
     border: 3px solid #fd8fff;
 }
+
+/* media queries */
+
+@media screen and (max-width: 755px) {
+ h1 {
+    font-size: 47px;
+    width: 700px;
+ }
+}
+
+@media screen and (max-width: 755px) {
+    h1 {
+        font-size: 40px;
+        width: 610px;
+     }
+     #container {
+        height: 700px;
+        width: 600px;
+    }
+    #question {
+        font-size: 35px;
+        width: 577px;
+        margin: 0px 10px 40px 10px auto; 
+    }
+    #correct-incorrect {
+        height: 600px;
+        width: 600px;
+       
+    }
+
+    #message {
+        font-size: 25px;
+        height: 250px;
+        width: 577px;
+    }
+
+    .start-over-button {
+        
+        margin-top: 30px;
+        
+    }
+}
+    
+    @media screen and (max-width: 645px) {
+        h1 {
+            font-size: 35px;
+            width: 510px;
+         }
+         #container {
+            height: 600px;
+            width: 500px;
+        }
+        #question {
+            font-size: 25px;
+            width: 477px;
+        }
+        #correct-incorrect {
+            height: 525px;
+            width: 500px;
+           
+        }
+    
+        #message {
+            font-size: 20px;
+            height: 175px;
+            width: 477px;
+        }
+        .start-over-button {
+            margin-top: 20px;
+        }
+    }
+
+    @media screen and (max-width: 545px) {
+        h1 {
+            font-size: 28px;
+            width: 410px;
+            padding-top: 20px;
+         }
+         #container {
+            height: 500px;
+            width: 400px;
+        }
+        #question {
+            font-size: 20px;
+            width: 377px;
+        }
+        #correct-incorrect {
+            height: 400px;
+            width: 400px;
+        }
+    
+        #message {
+            font-size: 16px;
+            height: 125px;
+            width: 377px;
+        }
+        .start-over-button {
+            margin-top: 20px;
+            width: 110px;
+            height: 40px;
+            font-size: 16px;
+        }
+
+        .question-button {
+            width: 310px;
+            height: 50px;
+            margin: 15px;
+            font-size: 20px;
+            margin: 20px auto;  
+        }
+
+        img {
+            width: 320px;
+            margin: 5px;
+         }
+         .start-button {
+            width: 310px;
+            height: 50px;
+            font-size: 20px;
+            margin: 20px auto;
+            
+        }
+    }
+
+        @media screen and (max-width: 445px) {
+        h1 {
+            font-size: 24px;
+            width: 310px;
+            padding-top: 20px;
+         }
+         #container {
+            height: 500px;
+            width: 300px;
+        }
+        #question {
+            font-size: 16px;
+            width: 277px;
+        }
+        #correct-incorrect {
+            height: 360px;
+            width: 300px;
+        }
+    
+        #message {
+            font-size: 12px;
+            height: 125px;
+            width: 277px;
+
+        }
+        .start-over-button {
+            margin-top: 20px;
+            width: 100px;
+            height: 40px;
+            font-size: 16px;
+        }
+
+        .question-button {
+            width: 250px;
+            height: 45px;
+            margin: 15px;
+            font-size: 16px;
+            margin: 20px auto;  
+        }
+        
+        img {
+            width: 250px;
+            margin: 5px;
+        }
+        .start-button {
+            width: 250px;
+            height: 45px;
+            font-size: 16px;
+            margin: 20px auto;
+            
+        }
+    }
+   
+
+
+    
