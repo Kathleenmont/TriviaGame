@@ -5,34 +5,31 @@ var possibleAnswers = [["Trinity 'The Tuck' Taylor", "Shea Couleé", "Peppermint
 var correctAnswers = ["c", "d", "a", "b", "c", "d", "c"];
 var correctAnswerText = ["Peppermint", "Alyssa Edwards", "Sharon Needles", "Latrice Royal", "Kalorie", "Bob", "Shea Coulee"];
 var message = "";
-var questionNumber = 0;
-var totalRight = 0;
-var totalWrong = 0;
-var timerCount = 20;
-var timer;
 
-var dragInfo = { 
-    
+
+
+var dragInfo = {
+
     question1: {
-      questionNumber: 1,
-      images: "assets/images/peppermint.gif",
-      question: "Which queen was the season 9 runner up?", 
-      possibleAnswers: ["Trinity 'The Tuck' Taylor", "Shea Couleé", "Peppermint", "Valintina"],
-      correctAnswers: "c",
-      correctAnswerText: "Peppermint",
+        questionNumber: 1,
+        images: "assets/images/peppermint.gif",
+        question: "Which queen was the season 9 runner up?",
+        possibleAnswers: ["Trinity 'The Tuck' Taylor", "Shea Couleé", "Peppermint", "Valintina"],
+        correctAnswers: "c",
+        correctAnswerText: "Peppermint",
     },
     question2: {
         questionNumber: 2,
         images: "assets/images/alyssaReaction.gif",
-        question: "Which queen went as Joan Crawford in The Snatch Game?", 
+        question: "Which queen went as Joan Crawford in The Snatch Game?",
         possibleAnswers: ["Jinkx Monsoon", "Sasha Velour", "BenDeLaCreme", "Alyssa Edwards"],
         correctAnswers: "d",
         correctAnswerText: "Alyssa Edwards",
-    }, 
+    },
     question3: {
         questionNumber: 3,
         images: "assets/images/needles.gif",
-        question: "In the episode 'RuPocalypse Now!' who was the winner of the post-apocalyptic runway challange?", 
+        question: "In the episode 'RuPocalypse Now!' who was the winner of the post-apocalyptic runway challange?",
         possibleAnswers: ["Sharon Needles", "Phi Phi O'Hara", "Alaska", "Monique Heart"],
         correctAnswers: "a",
         correctAnswerText: "Sharon Needles",
@@ -40,7 +37,7 @@ var dragInfo = {
     question4: {
         questionNumber: 4,
         images: "assets/images/latrice.gif",
-        question: 'Which Queen can we attribut the catchphrase "The shade of it all" to?', 
+        question: 'Which Queen can we attribut the catchphrase "The shade of it all" to?',
         possibleAnswers: ["Alyssa Edwards", "Latrice Royal", "Shangela", "Aja"],
         correctAnswers: "b",
         correctAnswerText: "Latrice Royal",
@@ -48,7 +45,7 @@ var dragInfo = {
     question5: {
         questionNumber: 5,
         images: "assets/images/vanjie.gif",
-        question: 'Which queen won the lip sync that sent home Vanessa Vanjie Mateo but gave the world the famous "Miss Vanjie" exit?', 
+        question: 'Which queen won the lip sync that sent home Vanessa Vanjie Mateo but gave the world the famous "Miss Vanjie" exit?',
         possibleAnswers: ["Mayhem Miller", "Dusty Ray Bottoms", "Kalorie Karbdashian Williams", "The Vixen"],
         correctAnswers: "c",
         correctAnswerText: "Kalorie",
@@ -56,7 +53,7 @@ var dragInfo = {
     question5: {
         questionNumber: 6,
         images: "assets/images/bobz.gif",
-        question: "Which queen is Mis Cracker's Drag Mother?", 
+        question: "Which queen is Mis Cracker's Drag Mother?",
         possibleAnswers: ["Thorgy Thor", "Monet Exchange", "Asia O'hara", "Bob the Drag Queen"],
         correctAnswers: "d",
         correctAnswerText: "Bob",
@@ -64,13 +61,42 @@ var dragInfo = {
     question6: {
         questionNumber: 7,
         images: "assets/images/shea.gif",
-        question: "Which queen won more challenges then her seasons winner did?", 
+        question: "Which queen won more challenges then her seasons winner did?",
         possibleAnswers: ["Trinity 'The Tuck' Taylor", "Valentina", "Shea Coulee", "Blair St. Clair"],
         correctAnswers: "c",
         correctAnswerText: "Shea Coulee",
     }
-    
+
 }
+
+var game = {
+
+    questionNumber: 0,
+    totalRight: 0,
+    totalWrong: 0,
+    timerCount: 0,
+    timer,
+    //  make a timer countdown function that displays for a certain amount of time
+    countDownTimer: function () {
+        $("#timer").text(game.timerCount);
+        if (game.timerCount === 0) {
+            clearInterval(game.timer);
+            game.totalWrong++;
+            // will test later
+            // incorrectSlide();
+            console.log(game.timerCount);
+
+        }
+    },
+
+//  make a timer countdown function that displays for a certain amount of time
+    myTimer: function() {
+        game.timer = setInterval(game.countDownTimer, 1000)
+    },
+
+}
+game.myTimer();
+
 
 
 // make a start game function that starts at questionNumber and stats at 0 and calls the next slide function
@@ -104,24 +130,9 @@ function startGame() {
     });
 
 }
-startGame();
-
-//  make a timer countdown function that displays for a certain amount of time
-function countDownTimer() {
-    $("#timer").text(timerCount);
-    timerCount--;
-    if (timerCount === 0) {
-        clearInterval(timer);
-        totalWrong++;
-        incorrectSlide();
-
-    }
-}
+// startGame();
 
 
-function myTimer() {
-    timer = setInterval(countDownTimer, 1000);
-}
 
 // make an end of game funciton
 function endOfGame() {
@@ -191,10 +202,10 @@ function incorrectSlide() {
 
     // displays gif with DOM
     $("#image-space").html("<img src=" + images[questionNumber] + " width='400px'>")
-    
+
     // message and displays the correct answer
     $("#message").html("Not quite. The correct answer was " + correctAnswerText[questionNumber] + ".\nNext time you better werk!").wrap('<pre />');
-    
+
     // check if last question
     lastQuestionCheck();
     if (lastQuestion === true) {
