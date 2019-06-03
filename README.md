@@ -4,9 +4,9 @@ Timed JavaScript trivia game for fans of Rupaul's Drag Race. Built to practice a
 
 ## GETTING STARTED
 
-Click button to start. 
+Click button to start. You will be taken through a series of trivia slides. 
 
-You have 10 seconds to answer each question. 
+You have 10 seconds to answer each question, and will get to see how you did at the end. 
 
 ## BUIT WITH
 
